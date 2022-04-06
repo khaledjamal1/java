@@ -1,61 +1,63 @@
-
-let player=0;
-let computer=0;
-let round = 5;
 function game(){
-    for (let i=0; i<round; i++){
-        if (playRound =='you win'){
-            player++;
-            console.log("you win");
-        } else if (playRound=='you lose'){
-            computer++;
-            console.log("you lose");
-        } else { 
-            console.log("It's a tie");
-        }
-        }
-        if (player>computer){
-            console.log('congrats you won '+ player +' to '+ computer);
-        } else {
-            console.log('you lost :( '+ player+'to'+computer);
-        }
-    function playerSelection(){
-        let input = prompt("enter choice");
-        while (input==null){
-            input = prompt("enter choice");
-        }
-        return input;
+    const games = 5; // total games 
+    let playerPoints = 0; // player points to start
+    let computerPoints = 0; // computer points to start
+  
+    for(let i = 0; i < games; i++) {
+      // get player answer and store in a variable
+      let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+      // generate computer answer
+      function computerPlay() { return (["paper","scissors","rock"])[Math.random() * 3 | 0]; }
+      let computerSelection = computerPlay();
+  
+      let round = playRound(playerSelection, computerSelection);
+      if(round === "wins"){
+        playerPoints++;
+        console.log("You Win");
+      } else if(round === "loses"){
+        computerPoints++;
+        console.log("You Lose");
+      } else if(round === "ties") {
+        console.log("tied");
+      } 
     }
-    function computerSelection(){
-        let options = ["rock","paper","scissor"]
-        return (options[Math.floor(Math.random()*options.length)]);
+  
+    if(playerPoints > computerPoints){
+      console.log('');
+      console.log("Congratulations!  You beat the computer " + playerPoints + " to " + computerPoints);
+    } else {
+      console.log("Sorry!  You lost to the computer " + computerPoints + " to " + playerPoints);
     }
-    const playerSelection1 = playerSelection()
-    const computerSelection1 = computerSelection()
-    function playRound(playerSelection,computerSelection){
-        
-        if (playerSelection1 =="rock" && computerSelection1 == 'paper'){
-        return 'you lose';
-        } else if (playerSelection1=="paper" && computerSelection1 == 'rock'){
-            return 'you win';
-        } else if (playerSelection1=="scissor" && computerSelection1 == 'paper'){
-            return 'you win';
-        } else if (playerSelection1=="paper" && computerSelection1 == 'scissor'){
-        return 'you lose';
-        } else if (playerSelection1=="scissor" && computerSelection1 == 'rock'){
-            return 'you lose';
-        } else if (playerSelection1=="rock" && computerSelection1 == 'scissor'){
-            return 'you win';
-        } else if (playerSelection1=="scissor" && computerSelection1 == 'paper'){
-            return 'you win';
-        } else if (playerSelection1=="paper" && computerSelection1 == 'scissor'){
-            return 'you lose';
-        } else {
-            return 'Tie';
-        }
-        
-        
+  } // end game();
+  
+  // play a round and get winner/loser and result and increment winner's points
+  function playRound(playerSelection, computerSelection) {  
+    if (playerSelection == 'rock') {
+      if (computerSelection == 'scissors') {
+        return 'wins';
+      } else if (computerSelection == 'paper') {
+        return 'loses';
+      } else {
+        return 'ties';
+      } 
     }
-}
-
-game()
+    if (playerSelection == 'paper') {
+      if (computerSelection == 'rock') {
+        return 'wins';
+      } else if (computerSelection == 'scissors') {
+        return 'loses';
+      } else {
+        return 'ties';
+      } 
+    }
+    if (playerSelection == 'scissors') {
+      if (computerSelection == 'rock') {
+        return 'loses';
+      } else if (computerSelection == 'paper') {
+        return 'wins';
+      } else {
+        return 'ties';
+      } 
+    }
+  }
+  
