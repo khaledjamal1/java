@@ -1,4 +1,7 @@
 
+let player=0;
+let computer=0;
+let round = 0;
 function playerSelection(){
     let input = prompt("enter choice");
     while (input==null){
@@ -13,24 +16,32 @@ function computerSelection(){
 const playerSelection1 = playerSelection()
 const computerSelection1 = computerSelection()
 function playRound(playerSelection,computerSelection){
+    let log = "";
      if (playerSelection1 =="rock" && computerSelection1 == 'paper'){
-       console.log ('you lose');
+       log ='you lose';
     } else if (playerSelection1=="paper" && computerSelection1 == 'rock'){
-        console.log('you win');
+        log= 'you win';
     } else if (playerSelection1=="scissor" && computerSelection1 == 'paper'){
-        console.log('you win');
+        log= 'you win';
     } else if (playerSelection1=="paper" && computerSelection1 == 'scissor'){
-        console.log('you lose');
+       log ='you lose';
     } else if (playerSelection1=="scissor" && computerSelection1 == 'rock'){
-        console.log('you lose');
+        log ='you lose';
     } else if (playerSelection1=="rock" && computerSelection1 == 'scissor'){
-        console.log('you win');
+        log ='you win';
     } else if (playerSelection1=="scissor" && computerSelection1 == 'paper'){
-        console.log('you win');
+        log= 'you win';
     } else if (playerSelection1=="paper" && computerSelection1 == 'scissor'){
-        console.log('you lose');
+        log ='you lose';
     } else {
-        console.log('ss')
+        log ='Tie';
+    } 
+    return log;
+}
+
+function game(){
+    while (round<5){
+        playRound;
+        round=round +1
     }
 }
-playRound()
