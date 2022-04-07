@@ -1,41 +1,38 @@
-function game (){
+function computerPlay() {
+  let options = ["rock","paper","scissor"];
+  return options[Math.floor(Math.random()* 3)];
+}
+let computerchoice = computerPlay() ;
+function game(){
   let playerScore = 0;
   let computerScore = 0;
   let rounds = 5;
   let playerchoice = prompt("choose paper,rock, or scissors").toLowerCase();
-  function computerPlay() {
-    let options = ['rock','paper','scissor'];
-    return (options[Math.floor(options.slice()* options.length)]);
-  }
-  let computerchoice = computerPlay() ;
   function playround(playerchoice,computerchoice){
-    if (playerchoice === "rock"){
-      if (computerchoice === 'rock'){
-        console.log("Tie");
-      } else if ( computerchoice === "paper"){
-        console.log("you Lose");
-      } else if (computerchoice === "scissor"){
-        console.log ("you win");
-      }
+    if (playerchoice === computerchoice) {
+      return 'Draw!';
+    } else if ((playerchoice == "rock") && (computerchoice == "scissors")) {
+      return "Player won!";
+    } else if ((playerchoice == "paper") && (computerchoice == "rock")) {
+      return "Player won!";
+    } else if ((playerchoice == "scissors") && (computerchoice == "paper")) {
+      return "Player won!";
+    } else if ((playerchoice == "paper") && (computerchoice == "scissors")) {
+      return "Computer won!";
+    } else if ((playerchoice == "scissors") && (computerchoice == "rock")) {
+      return "Computer won!";
+    } else if ((playerchoice == "rock") && (computerchoice == "paper")) {
+      return "Computer won!";
     }
-    if (playerchoice === "paper"){
-      if (computerchoice === 'paper'){
-        console.log("Tie");
-      } else if ( computerchoice === "scissor"){
-        console.log("you Lose");
-      } else if (computerchoice === "rock"){
-        console.log ("you win");
-      }
-    }
-    if (playerchoice === "scissor"){
-      if (computerchoice === 'scissor'){
-        console.log("Tie");
-      } else if ( computerchoice === "rock"){
-        console.log("you Lose");
-      } else if (computerchoice === "paper"){
-        console.log ("you win");
-      }
+  }
+  
+}
+function play(){
+  for (let i=0; i<rounds; i++){
+    if (playround=== "Player won!"){
+      playerScore++;
+      console.log (playerScore);
     }
   }
 }
-game()
+game();
